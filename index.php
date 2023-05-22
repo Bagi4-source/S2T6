@@ -87,14 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 while ($abilka = $relations->fetch(PDO::FETCH_ASSOC)) {
                     $abilki[] = $abilka['ability_id'];
                 }
-//                setcookie('fio_value', $row['name'], time() + 30 * 24 * 60 * 60);
-//                setcookie('email_value', $row['email'], time() + 30 * 24 * 60 * 60);
-//                setcookie('checkbox_value', $row['checkbox'], time() + 30 * 24 * 60 * 60);
-//                setcookie('limbs_value', $row['limbs'], time() + 30 * 24 * 60 * 60);
-//                setcookie('abilities_value', serialize($abilki), time() + 30 * 24 * 60 * 60);
-//                setcookie('gender_value', $row['gender'], time() + 30 * 24 * 60 * 60);
-//                setcookie('year_value', $row['year'], time() + 30 * 24 * 60 * 60);
-//                setcookie('biography_value', $row['biography'], time() + 30 * 24 * 60 * 60);
                 $values['fio'] = $row['name'];
                 $values['email'] = $row['email'];
                 $values['checkbox'] = $row['checkbox'];
@@ -103,8 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $values['gender'] = $row['gender'];
                 $values['year'] = $row['year'];
                 $values['biography'] = $row['biography'];
-
-
             }
         } catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
