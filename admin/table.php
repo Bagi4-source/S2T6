@@ -15,9 +15,12 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Имя</th>
-            <th scope="col">Фамилия</th>
-            <th scope="col">Username</th>
+            <th scope="col">ФИО</th>
+            <th scope="col">Почта</th>
+            <th scope="col">Год рождения</th>
+            <th scope="col">Пол</th>
+            <th scope="col">Кол-во конечностей</th>
+            <th scope="col">Управление</th>
         </tr>
         </thead>
         <tbody>
@@ -34,28 +37,11 @@
             <td>%s</td>
             <td>%s</td>
             <td>%s</td>
-        </tr>', $row['id'], $row['name'], $row['email'], $row['year'], $row['gender'], $row['limbs']);
+            <td><a href="%s">Изменить</a><a href="%s">Удалить</a></td>
+        </tr>', $row['id'], $row['name'], $row['email'], $row['year'], $row['gender'], $row['limbs'], 1, 1);
         }
         $db = null;
         ?>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
         </tbody>
     </table>
 </div>
