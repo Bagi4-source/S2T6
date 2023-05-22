@@ -40,7 +40,7 @@
             <td>%s</td>
             <td>%s</td>
             <td>%s</td>
-            <td><a href="./edit/?id=%s">Изменить</a> | <a href="./delete/?id=%s">Удалить</a></td>
+            <td><a class="delete" href="./edit/?id=%s">Изменить</a> | <a href="./delete/?id=%s">Удалить</a></td>
         </tr>', $row['id'], $row['name'], $row['email'], $row['year'], $row['gender'], $row['limbs'], 1, 1);
         }
         $db = null;
@@ -57,5 +57,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+<script>
+    $('.delete').each(() => {
+        $(this).click(function (e) {
+            e.preventDefault();
+            alert('afafaf');
+        });
+    })
+</script>
 </body>
 
