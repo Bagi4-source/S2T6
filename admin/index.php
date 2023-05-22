@@ -25,6 +25,8 @@ $users = $db->query("SELECT * FROM users;");
 $stmt = $db->prepare("SELECT count(id) FROM relations where ability_id = ?;");
 $stmt->execute(['1']);
 $result = $stmt->get_result();
-print_r($result);
+foreach ($stmt as $row) {
+    print($row);
+}
 
 include('table.php');
