@@ -20,7 +20,7 @@
         </thead>
         <tbody>
         <?php
-        $stmt = $db->prepare("SELECT t2.name as ability, count(id) as count FROM relations JOIN abilities t2 ON t2.id = ability_id group by ability_id;");
+        $stmt = $db->prepare("SELECT t2.name as ability, count(r.id) as count FROM relations r JOIN abilities t2 ON t2.id = r.ability_id group by r.ability_id;");
         $stmt->execute();
         foreach ($stmt as $row) {
             printf('<tr>
