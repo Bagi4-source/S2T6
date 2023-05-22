@@ -231,4 +231,4 @@ try {
 }
 setcookie('save', '1');
 
-header('Location: ./');
+header('Location: ../');
