@@ -20,14 +20,14 @@
         </thead>
         <tbody>
         <?php
-        while ($row = $users->fetch(PDO::FETCH_ASSOC)) {
+        $stmt = $db->prepare("SELECT t2.name as ability, count(id) as count FROM relations JOIN abilities t2 ON t2.id = ability_id group by ability_id;");
+        $stmt->execute();
+        foreach ($stmt as $row) {
             printf('<tr>
             <td>%s</td>
             <th scope="row">%s</th>
-            <td><a class="delete" href="./edit/?id=%s">Изменить</a> | <a href="./delete/?id=%s">Удалить</a></td>
-        </tr>', $row['id'], $row['name'], $row['email'], $row['year'], $row['gender'], $row['limbs'], $row['id'], $row['id']);
+        </tr>', $row['ability'], $row['count']);
         }
-        $db = null;
         ?>
         </tbody>
     </table>
@@ -57,7 +57,6 @@
             <td><a class="delete" href="./edit/?id=%s">Изменить</a> | <a href="./delete/?id=%s">Удалить</a></td>
         </tr>', $row['id'], $row['name'], $row['email'], $row['year'], $row['gender'], $row['limbs'], $row['id'], $row['id']);
         }
-        $db = null;
         ?>
         </tbody>
     </table>

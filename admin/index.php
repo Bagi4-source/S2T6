@@ -22,10 +22,4 @@ $pass = '9294062';
 $db = new PDO('mysql:host=localhost;dbname=u52803', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
 $users = $db->query("SELECT * FROM users;");
 
-$stmt = $db->prepare("SELECT count(id) as count FROM relations group by ability_id;");
-$stmt->execute(['1']);
-foreach ($stmt as $row) {
-    print($row['count']);
-}
-
 include('table.php');
