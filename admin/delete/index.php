@@ -26,4 +26,4 @@ try {
     print('Error : ' . $e->getMessage());
     exit();
 }
-header('Location: ../');
+
