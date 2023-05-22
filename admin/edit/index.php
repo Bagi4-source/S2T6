@@ -10,4 +10,4 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
     exit();
 }
 
-include('../table.php');
+include('table.php');
