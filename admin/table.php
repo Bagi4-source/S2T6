@@ -10,7 +10,10 @@
 
 </head>
 <body>
-<div class="table">
+<div class="container">
+    <div></div>
+    <div></div>
+    <div></div>
     <table class="table">
         <thead>
         <tr>
