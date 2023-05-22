@@ -11,9 +11,27 @@
 </head>
 <body>
 <div class="container">
-    <div></div>
-    <div></div>
-    <div></div>
+    <table class="table table-hover table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Способоность</th>
+            <th scope="col">Количество пользователей</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        while ($row = $users->fetch(PDO::FETCH_ASSOC)) {
+            printf('<tr>
+            <td>%s</td>
+            <th scope="row">%s</th>
+            <td><a class="delete" href="./edit/?id=%s">Изменить</a> | <a href="./delete/?id=%s">Удалить</a></td>
+        </tr>', $row['id'], $row['name'], $row['email'], $row['year'], $row['gender'], $row['limbs'], $row['id'], $row['id']);
+        }
+        $db = null;
+        ?>
+        </tbody>
+    </table>
+    <br>
     <table class="table table-hover table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
@@ -28,11 +46,7 @@
         </thead>
         <tbody>
         <?php
-        $user = 'u52803';
-        $pass = '9294062';
-        $db = new PDO('mysql:host=localhost;dbname=u52803', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
-        $abilities = $db->query("SELECT * FROM users;");
-        while ($row = $abilities->fetch(PDO::FETCH_ASSOC)) {
+        while ($row = $users->fetch(PDO::FETCH_ASSOC)) {
             printf('<tr>
             <th scope="row">%s</th>
             <td>%s</td>

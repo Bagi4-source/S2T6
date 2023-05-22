@@ -17,4 +17,14 @@ print('Вы успешно авторизовались и видите защи
 // Реализовать просмотр и удаление всех данных.
 // *********
 
+$user = 'u52803';
+$pass = '9294062';
+$db = new PDO('mysql:host=localhost;dbname=u52803', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
+$users = $db->query("SELECT * FROM users;");
+
+$stmt = $db->prepare("SELECT count(id) FROM relations where ability_id = ?;");
+$stmt->execute(['1']);
+$result = $stmt->get_result();
+print_r($result);
+
 include('table.php');
