@@ -27,3 +27,4 @@ try {
     exit();
 }
 
+header('Location: ../');
