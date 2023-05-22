@@ -10,4 +10,4 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
     exit();
 }
 
-echo $_GET['id'];
+print_r($_GET);
