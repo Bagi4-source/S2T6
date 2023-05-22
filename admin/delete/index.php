@@ -15,7 +15,7 @@ $id = $_GET['id'];
 $user = 'u52803';
 $pass = '9294062';
 $db = new PDO('mysql:host=localhost;dbname=u52803', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
-
+print_r($id);
 try {
     $stmt = $db->prepare("DELETE FROM users WHERE id = ?");
     $stmt->execute([$id]);
