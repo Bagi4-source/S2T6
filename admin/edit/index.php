@@ -10,12 +10,14 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
     exit();
 }
 
-$id = $_GET['id'];
+$id = -1;
 
 $user = 'u52803';
 $pass = '9294062';
 $db = new PDO('mysql:host=localhost;dbname=u52803', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $id = $_GET['id'];
+    setcookie('user_id', $id, time() + 30 * 24 * 60 * 60);
     $messages = array();
     if (!empty($_COOKIE['save'])) {
         setcookie('save', '', 100000);
@@ -106,6 +108,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
     include('form.php');
 }
+
+$id = $_COOKIE['user_id'];
+if (empty($id))
+    exit();
 
 $abilities = [];
 $abilities_query = $db->query("SELECT id FROM abilities;");
