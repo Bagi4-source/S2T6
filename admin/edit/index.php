@@ -16,6 +16,63 @@ $user = 'u52803';
 $pass = '9294062';
 $db = new PDO('mysql:host=localhost;dbname=u52803', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $messages = array();
+    if (!empty($_COOKIE['save'])) {
+        setcookie('save', '', 100000);
+        setcookie('fio_value', '', 100000);
+        setcookie('email_value', '', 100000);
+        setcookie('checkbox_value', '', 100000);
+        setcookie('limbs_value', '', 100000);
+        setcookie('abilities_value', '', 100000);
+        setcookie('gender_value', '', 100000);
+        setcookie('year_value', '', 100000);
+        setcookie('biography_value', '', 100000);
+        if (!empty($_SESSION['login'])) {
+            $messages[] = 'Спасибо, результаты сохранены.';
+        } else
+            $messages[] = 'Спасибо, результаты сохранены. Данные для входа отправлены на Вашу почту!';
+    }
+
+    $errors = array();
+    $errors['fio'] = !empty($_COOKIE['fio_error']);
+    $errors['email'] = !empty($_COOKIE['email_error']);
+    $errors['checkbox'] = !empty($_COOKIE['checkbox_error']);
+    $errors['abilities'] = !empty($_COOKIE['abilities_error']);
+    $errors['limbs'] = !empty($_COOKIE['limbs_error']);
+    $errors['gender'] = !empty($_COOKIE['gender_error']);
+    $errors['year'] = !empty($_COOKIE['year_error']);
+
+    if ($errors['fio']) {
+        setcookie('fio_error', '', 100000);
+        $messages[] = '<div class="error">Заполните имя!</div>';
+    }
+    if ($errors['email']) {
+        setcookie('email_error', '', 100000);
+        $messages[] = '<div class="error">Заполните email!</div>';
+    }
+    if ($errors['checkbox']) {
+        setcookie('checkbox_error', '', 100000);
+        $messages[] = '<div class="error">Поставьте галочку!</div>';
+    }
+    if ($errors['abilities']) {
+        setcookie('abilities_error', '', 100000);
+        $messages[] = '<div class="error">Выберете способности!</div>';
+    }
+    if ($errors['limbs']) {
+        setcookie('limbs_error', '', 100000);
+        $messages[] = '<div class="error">Укажите количество конечностей!</div>';
+    }
+    if ($errors['gender']) {
+        setcookie('gender_error', '', 100000);
+        $messages[] = '<div class="error">Укажите пол!</div>';
+    }
+    if ($errors['year']) {
+        setcookie('year_error', '', 100000);
+        $messages[] = '<div class="error">Заполните год рождения!</div>';
+    }
+
+    $values = array();
+
     try {
         $user = $db->prepare("Select * from users where id = ?");
         $relations = $db->prepare("Select * from relations where user_id = ?");
