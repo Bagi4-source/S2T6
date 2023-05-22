@@ -14,8 +14,8 @@
     <div></div>
     <div></div>
     <div></div>
-    <table class="table">
-        <thead>
+    <table class="table table-hover table-bordered table-striped">
+        <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">ФИО</th>
