@@ -10,4 +10,20 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
     exit();
 }
 
-print_r($_GET);
+$id = $_GET['id'];
+
+$user = 'u52803';
+$pass = '9294062';
+$db = new PDO('mysql:host=localhost;dbname=u52803', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
+
+try {
+    $stmt = $db->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->execute([$id]);
+    print_r($stmt);
+    if (!$stmt) {
+        print('Error : ' . $stmt->errorInfo());
+    }
+} catch (PDOException $e) {
+    print('Error : ' . $e->getMessage());
+    exit();
+}
