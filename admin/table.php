@@ -41,7 +41,7 @@
             <td>%s</td>
             <td>%s</td>
             <td><a class="delete" href="./edit/?id=%s">Изменить</a> | <a href="./delete/?id=%s">Удалить</a></td>
-        </tr>', $row['id'], $row['name'], $row['email'], $row['year'], $row['gender'], $row['limbs'], 1, 1);
+        </tr>', $row['id'], $row['name'], $row['email'], $row['year'], $row['gender'], $row['limbs'], $row['id'], $row['id']);
         }
         $db = null;
         ?>
