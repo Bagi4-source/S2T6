@@ -40,7 +40,7 @@
             <td>%s</td>
             <td>%s</td>
             <td>%s</td>
-            <td><a href="%s">Изменить</a><a href="%s">Удалить</a></td>
+            <td><a href="%s">Изменить</a> | <a href="%s">Удалить</a></td>
         </tr>', $row['id'], $row['name'], $row['email'], $row['year'], $row['gender'], $row['limbs'], 1, 1);
         }
         $db = null;
