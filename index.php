@@ -118,13 +118,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 // POST
 
-strip_tags($_COOKIE['fio_error']);
-strip_tags($_COOKIE['email_error']);
-strip_tags($_COOKIE['checkbox_error']);
-strip_tags($_COOKIE['abilities_error']);
-strip_tags($_COOKIE['limbs_error']);
-strip_tags($_COOKIE['gender_error']);
-strip_tags($_COOKIE['year_error']);
+strip_tags($_POST['fio']);
+strip_tags($_POST['email']);
+strip_tags($_POST['checkbox']);
+strip_tags($_POST['abilities']);
+strip_tags($_POST['limbs']);
+strip_tags($_POST['gender']);
+strip_tags($_POST['year']);
 
 $abilities = [];
 $abilities_query = $db->query("SELECT id FROM abilities;");
@@ -177,7 +177,6 @@ if (empty($_POST['limbs']) || !is_numeric($_POST['limbs']) || $_POST['limbs'] > 
 } else {
     setcookie('limbs_value', $_POST['limbs'], time() + 30 * 24 * 60 * 60);
 }
-
 if (empty($_POST['gender']) || $_POST['gender'] != 'м' && $_POST['gender'] != 'ж') {
     setcookie('gender_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;

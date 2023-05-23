@@ -122,13 +122,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
     include('form.php');
 }
-strip_tags($_COOKIE['fio_error']);
-strip_tags($_COOKIE['email_error']);
-strip_tags($_COOKIE['checkbox_error']);
-strip_tags($_COOKIE['abilities_error']);
-strip_tags($_COOKIE['limbs_error']);
-strip_tags($_COOKIE['gender_error']);
-strip_tags($_COOKIE['year_error']);
+strip_tags($_POST['fio']);
+strip_tags($_POST['email']);
+strip_tags($_POST['checkbox']);
+strip_tags($_POST['abilities']);
+strip_tags($_POST['limbs']);
+strip_tags($_POST['gender']);
+strip_tags($_POST['year']);
 
 $id = $_COOKIE['user_id'];
 if (empty($id))
