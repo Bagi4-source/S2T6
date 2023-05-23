@@ -122,6 +122,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
     include('form.php');
 }
+strip_tags($_COOKIE['fio_error']);
+strip_tags($_COOKIE['email_error']);
+strip_tags($_COOKIE['checkbox_error']);
+strip_tags($_COOKIE['abilities_error']);
+strip_tags($_COOKIE['limbs_error']);
+strip_tags($_COOKIE['gender_error']);
+strip_tags($_COOKIE['year_error']);
 
 $id = $_COOKIE['user_id'];
 if (empty($id))

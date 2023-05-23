@@ -118,6 +118,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 // POST
 
+strip_tags($_COOKIE['fio_error']);
+strip_tags($_COOKIE['email_error']);
+strip_tags($_COOKIE['checkbox_error']);
+strip_tags($_COOKIE['abilities_error']);
+strip_tags($_COOKIE['limbs_error']);
+strip_tags($_COOKIE['gender_error']);
+strip_tags($_COOKIE['year_error']);
+
 $abilities = [];
 $abilities_query = $db->query("SELECT id FROM abilities;");
 while ($row = $abilities_query->fetch(PDO::FETCH_ASSOC)) {
