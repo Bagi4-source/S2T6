@@ -1,20 +1,33 @@
 <?php
 
-if (empty($_SERVER['PHP_AUTH_USER']) ||
-    empty($_SERVER['PHP_AUTH_PW']) ||
-    $_SERVER['PHP_AUTH_USER'] != 'admin' ||
-    md5($_SERVER['PHP_AUTH_PW']) != md5('123')) {
+$user = 'u52803';
+$pass = '9294062';
+$db = new PDO('mysql:host=localhost;dbname=u52803', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
+function admin_error()
+{
     header('HTTP/1.1 401 Unanthorized');
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Требуется авторизация</h1>');
     exit();
 }
 
-$id = $_GET['id'];
+if (empty($_SERVER['PHP_AUTH_USER']) ||
+    empty($_SERVER['PHP_AUTH_PW'])) {
+    admin_error();
+} else {
+    $stmt = $db->prepare("SELECT * FROM admins WHERE login = ? and password = ?");
+    $login = $_SERVER['PHP_AUTH_USER'];
+    $password = md5($_SERVER['PHP_AUTH_PW']);
 
-$user = 'u52803';
-$pass = '9294062';
-$db = new PDO('mysql:host=localhost;dbname=u52803', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
+    $stmt->execute([$login, $password]);
+
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!$row) {
+        admin_error();
+    }
+}
+
+$id = $_GET['id'];
 
 try {
     $stmt = $db->prepare("DELETE FROM users WHERE id = ?");
